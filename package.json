@@ -1,0 +1,58 @@
+{
+  "name": "nodeprojects",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "sass  --embed-source-map --watch  src/resource/scss/app.scss src/public/css/app.css",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "dev": "nodemon --inspect src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buiducviettt/nodejs_project.git"
+  },
+  "keywords": [
+    "ducviet",
+    "f8",
+    "f8",
+    "node",
+    "js"
+  ],
+  "author": "Duc Viet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buiducviettt/nodejs_project/issues"
+  },
+  "homepage": "https://github.com/buiducviettt/nodejs_project#readme",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.18.0",
+    "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.13.0",
+    "mongoose-delete": "^1.0.2",
+    "mongoose-slug-generator": "^1.0.4",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "prisma": "^6.18.0",
+    "sass": "^1.89.2"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}

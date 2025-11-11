@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem !important;
+}
+
+.search_form .search-container {
+  position: relative;
+}
+.search_form .search-input {
+  height: 50px;
+  border-radius: 30px;
+  padding-left: 35px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.search_form .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.course_item {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../resource/scss/app.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;EACA;EACA;;;AAGF;AAAA;EAEE;;;AAEF;EACE;EACA;EACA;;;AAGF;EACE;EACA;;;AAGF;EACE;EACA;EACA;EACA;;;AAEF;EACE;;;AAGA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;;AAGJ;EACE;EACA;EACA%22,%22file%22:%22app.css%22%7D */

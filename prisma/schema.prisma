@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String?  @unique
+  passwordHash String   @map("password_hash")
+  name         String?
+  avatar       String?  @db.VarChar(255)
+  role         Role     @default(user)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  username     String?  @unique
+  Cart         Cart?
+
+  @@map("users")
+}
+
+// danh sách sản phẩm 
+model Product {
+  id          Int        @id @default(autoincrement())
+  title       String
+  image       String?
+  description String?    @db.Text
+  rating      Int
+  price       Float
+  stock       Int
+  cate        String?
+  comments    String?
+  createdAt   DateTime   @default(now())
+  cartItems   CartItem[]
+}
+
+model Cart {
+  id        Int        @id @default(autoincrement())
+  userId    Int        @unique @map("user_id")
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  user      User       @relation(fields: [userId], references: [id])
+  items     CartItem[]
+}
+
+model CartItem {
+  id        Int     @id @default(autoincrement())
+  cartId    Int     @map("cart_id")
+  quantity  Int     @default(1)
+  productId Int
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@index([cartId], map: "cart_items_cart_id_fkey")
+  @@map("cart_items")
+}
+
+enum Role {
+  user
+  admin
+}
