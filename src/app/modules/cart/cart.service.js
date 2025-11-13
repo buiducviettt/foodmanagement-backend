@@ -51,11 +51,11 @@ async function addToCart(userId, productId) {
 }
 
 async function removeFromCart(userId, productId) {
-  const cart = await prisma.cart.findUnique({ where: { userId } });
+  const cart = await prisma.cart.findFirst({ where: { userId } });
   if (!cart) return null;
 
   await prisma.cartItem.deleteMany({
-    where: { cartId: cart.id, productId },
+    where: { cartId: cart.id, productId: Number(productId) },
   });
 
   return prisma.cart.findUnique({
