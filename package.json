@@ -8,6 +8,8 @@
     "watch": "sass  --embed-source-map --watch  src/resource/scss/app.scss src/public/css/app.css",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
+    "postinstall": "prisma generate",
+  "start": "node server.js"
     "prisma:studio": "prisma studio",
     "dev": "nodemon --inspect src/index.js"
   },
@@ -22,6 +24,9 @@
     "node",
     "js"
   ],
+  "engines": {
+  "node": "18.x"
+},
   "author": "Duc Viet",
   "license": "ISC",
   "bugs": {
