@@ -3,11 +3,12 @@ const service = require('./auth.service');
 async function register(req, res) {
   try {
     const user = await service.register(req.body);
-    return res.status(201).json(user);
+    return res.status(201).json(user); // 201 = Created
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(400).json({ error: error.message });
   }
 }
+
 // xử lý login
 async function login(req, res) {
   try {

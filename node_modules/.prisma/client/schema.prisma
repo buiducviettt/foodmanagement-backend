@@ -24,17 +24,18 @@ model User {
 
 // danh sách sản phẩm 
 model Product {
-  id          Int        @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
   title       String
   image       String?
-  description String?    @db.Text
+  description String?     @db.Text
   rating      Int
   price       Float
   stock       Int
   cate        String?
   comments    String?
-  createdAt   DateTime   @default(now())
+  createdAt   DateTime    @default(now())
   cartItems   CartItem[]
+  orderItems  OrderItem[]
 }
 
 model Cart {
@@ -56,6 +57,39 @@ model CartItem {
 
   @@index([cartId], map: "cart_items_cart_id_fkey")
   @@map("cart_items")
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  type      String // Dine In | To Go | Delivery
+  total     Int
+  customer  String
+  status    String      @default("pending")
+  createdAt DateTime    @default(now())
+  items     OrderItem[]
+  revenue   Revenue?
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  quantity  Int
+  price     Float
+  createdAt DateTime @default(now())
+  // relations
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model Revenue {
+  id        Int      @id @default(autoincrement())
+  amount    Int
+  createdAt DateTime @default(now())
+
+  // liên kết với 1 order
+  order   Order @relation(fields: [orderId], references: [id])
+  orderId Int   @unique
 }
 
 enum Role {
