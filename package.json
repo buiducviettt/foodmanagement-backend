@@ -2,16 +2,16 @@
   "name": "nodeprojects",
   "version": "1.0.0",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "postinstall": "prisma generate",
-    "start": "node server.js",
-    "start": "nodemon --inspect src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "sass  --embed-source-map --watch  src/resource/scss/app.scss src/public/css/app.css",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "watch": "sass --embed-source-map --watch src/resource/scss/app.scss src/public/css/app.css",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
-    "dev": "nodemon --inspect src/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
   },
   "keywords": [
     "ducviet",
-    "f8",
     "f8",
     "node",
     "js"
