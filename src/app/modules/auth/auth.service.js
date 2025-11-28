@@ -3,20 +3,32 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 //  đăng ký tài khoản
 async function register({ username, email, password, name }) {
-  const exists = await prisma.user.findUnique({
-    where: { email: email },
+  // Check email
+  const emailExists = await prisma.user.findUnique({
+    where: { email },
   });
-  if (exists) {
+  if (emailExists) {
     throw new Error('Email đã tồn tại trong hệ thống');
   }
-  // else
+
+  // Check username
+  const usernameExists = await prisma.user.findUnique({
+    where: { username },
+  });
+  if (usernameExists) {
+    throw new Error('Username đã tồn tại trong hệ thống');
+  }
+
   const hashedPassword = await bcrypt.hash(password, 10);
+
   const user = await prisma.user.create({
     data: { username, email, passwordHash: hashedPassword, name, role: 'user' },
     select: { id: true, username: true, email: true, name: true, role: true },
   });
+
   return user;
 }
+
 async function login({ email, password }) {
   try {
     const user = await prisma.user.findUnique({
