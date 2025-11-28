@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
+    "postinstall": "prisma generate",
+    "start": "node server.js",
     "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "sass  --embed-source-map --watch  src/resource/scss/app.scss src/public/css/app.css",
@@ -54,5 +56,8 @@
   },
   "prisma": {
     "seed": "node prisma/seed.js"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
